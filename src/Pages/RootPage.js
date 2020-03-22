@@ -5,30 +5,31 @@ import AdminPage from './AdminPage';
 
 const RootPage = () => {
 
-    const [ selectedTab, setSelectedTab ] = useState(0)
+    const [ selectedTab, setSelectedTab ] = useState(1)
 
     return (
-        <Grid>
-
-        
-          <AppBar position="static">
-            
-            <Tabs value={selectedTab} onChange={(event, newValue) => {setSelectedTab(newValue)}}>
-              <Tab label="Enforcer"/>
-              <Tab label="Admin"/>
-            </Tabs>
-            
-          </AppBar>
-          {
-            selectedTab === 0 &&
-            <Grid>
-            <EnforcerPage/>
-          </Grid>
+      <div>
+        <AppBar position='absolute'>      
+          <Tabs value={selectedTab} onChange={(event, newValue) => {setSelectedTab(newValue)}}>
+            <Tab label="Enforcer"/>
+            <Tab label="Admin"/>
+          </Tabs>
+        </AppBar>
+        {/* <main> */}
+        <Grid container style={{marginTop: '60px'}} justify="center">
+          { selectedTab === 0 &&
+            <Grid item>
+              <EnforcerPage/>
+            </Grid>
           }
-          <Grid hidden={selectedTab !== 1}>
-            <AdminPage/>
-          </Grid>
+          { selectedTab === 1 &&
+            <Grid item>
+              <AdminPage/>
+            </Grid> 
+          }
         </Grid>
+        {/* </main> */}
+      </div>
     )
 }
 

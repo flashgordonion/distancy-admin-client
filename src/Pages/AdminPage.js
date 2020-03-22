@@ -1,94 +1,74 @@
-import React, { Fragment, useState } from 'react';
-import { Grid, Fab } from '@material-ui/core';
-import { TimePicker } from '@material-ui/pickers';
-import EditIcon from '@material-ui/icons/Edit';
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
+import React, { useState } from 'react';
+import { Grid, TextField, Button, Paper } from '@material-ui/core';
+import { KeyboardTimePicker } from '@material-ui/pickers';
 
-
-const PEOPLE_MAX = 50;
-const PERCENTAGE_RESERVATION = 50;
-const TIME_SLOT_LENGTH = 30;
 
 const AdminPage = (props) => {
-  let [inStoreCapacity, setInStoreCapacity] = useState(PEOPLE_MAX);
-  let [percentageReservation, setPercentageReservation] = useState(PERCENTAGE_RESERVATION);
-  let [selectedDate, handleDateChange] = useState(new Date());
 
-  function handleInStoreCapacityEditClick() {
-    setInStoreCapacity(0);
-  }
-  
-  function handleInStoreCapacityIncreaseClick() {
-    if (inStoreCapacity < PEOPLE_MAX) {
-      setInStoreCapacity(inStoreCapacity + 1);
-    }
-  }
-  
-  function handleInStoreCapacityDecreaseClick() {
-    if (inStoreCapacity > 0) {
-      setInStoreCapacity(inStoreCapacity - 1);
-    }
-  }
-
-  function handlePercentageReservationEditClick() {
-    setPercentageReservation(0);
-  }
+  const [state, setState] = useState({
+    customerCapacity: 0,
+    reservationSlots: 0,
+    openingTime: new Date(),
+    closingTime: new Date(),
+    timeslotDuration: 15
+  })
 
   return (
+    <Paper>
     <Grid
       container
       direction='column' 
-      align='left'
-      spacing={3}
     >
-      TODO - AdminPage
       <Grid item>
-        Open hour, close hour
-        {/* https://material-ui-pickers.dev/demo/timepicker */}
-        {/* <TimePicker autoOk label="12 hours" value={selectedDate} onChange={handleDateChange} /> */}
+        <Grid container spacing={3}>
+          <Grid item>
+            <KeyboardTimePicker 
+              autoOk 
+              label="Opening Time" 
+              value={state.openingTime} 
+              onChange={ openingTime => setState({...state, openingTime})} />
+          </Grid>
+          <Grid item>
+            <KeyboardTimePicker 
+              autoOk 
+              label="Closing Time" 
+              value={state.closingTime} 
+              onChange={ closingTime => setState({...state, closingTime})} />
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item>
-        In store capacity: {inStoreCapacity}  
-        <Fab 
-          onClick={handleInStoreCapacityEditClick}
-          color="secondary" 
-          aria-label="edit"
-        >
-          < EditIcon />
-        </Fab>
-        <Fab
-          onClick={handleInStoreCapacityIncreaseClick}
-          color="primary" 
-          aria-label="add"
-        >
-          <AddIcon/>
-        </Fab> 
-        <Fab
-          onClick={handleInStoreCapacityDecreaseClick}
-          color="primary" 
-          aria-label="remove"
-        >
-          <RemoveIcon/>
-        </Fab> 
+        <TextField 
+          label="Customer Capacity"
+          type="number"
+          value={state.customerCapacity} 
+          onChange={ event => setState({...state, customerCapacity: event.target.value})} />
       </Grid>
       <Grid item>
-        Percent saved for reservation: {percentageReservation}%
-        <Fab 
-          onClick={handlePercentageReservationEditClick}
-          color="secondary" 
-          aria-label="edit"
-        >
-          < EditIcon />
-        </Fab>
+        <Grid container spacing={3}>
+          <Grid item>
+            <TextField 
+              label="Reservation Slots" 
+              type="number"
+              value={state.reservationSlots} 
+              onChange={ event => setState({...state, reservationSlots: event.target.value})} />
+          </Grid>
+          <Grid item>
+          <TextField 
+            label="Reservation Duration" 
+            type="number"
+            value={state.timeslotDuration} 
+            onChange={ event => setState({...state, timeslotDuration: event.target.value})} />
+          </Grid>
+        </Grid>
       </Grid>
       <Grid item>
-        TIme slot length: {TIME_SLOT_LENGTH}
-      </Grid>
-      <Grid item>
-        
+        <Button >
+          Save
+        </Button>
       </Grid>
     </Grid>
+    </Paper>
   )
 }
 

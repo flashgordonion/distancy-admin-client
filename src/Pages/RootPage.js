@@ -19,9 +19,12 @@ const RootPage = () => {
             </Tabs>
             
           </AppBar>
-          <Grid hidden={selectedTab !== 0}>
+          {
+            selectedTab === 0 &&
+            <Grid>
             <EnforcerPage/>
           </Grid>
+          }
           <Grid hidden={selectedTab !== 1}>
             <AdminPage/>
           </Grid>

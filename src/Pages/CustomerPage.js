@@ -3,7 +3,7 @@ import { Grid, TextField, Button, Paper } from '@material-ui/core';
 import { KeyboardTimePicker } from '@material-ui/pickers';
 
 
-const AdminPage = (props) => {
+const CustomerPage = (props) => {
 
   const [state, setState] = useState({
     customerCapacity: 0,
@@ -72,4 +72,4 @@ const AdminPage = (props) => {
   )
 }
 
-export default AdminPage
+export default CustomerPage

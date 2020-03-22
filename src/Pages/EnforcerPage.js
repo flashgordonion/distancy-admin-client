@@ -14,9 +14,14 @@ const EnforcerPage = (props) => {
   }
 
   return (
-    <Grid container={true} direction='column' align='left'>
+    <Grid
+      container
+      direction='column' 
+      align='left'
+      spacing={3}
+    >
       TODO - EnforcerPage
-      <Grid item={true}>
+      <Grid item>
         <Fab
           onClick={handlePlusClick}
           color="primary" 
@@ -26,24 +31,26 @@ const EnforcerPage = (props) => {
         </Fab> 
         Walk-in
       </Grid>
-      <Grid item={true}>
-      <Fab 
-        onClick={handlePlusClick} 
-        color="primary" 
-        aria-label="add"
-      >
-        <AddIcon/>
-      </Fab> Reserved
+      <Grid item>
+        <Fab 
+          onClick={handlePlusClick} 
+          color="primary" 
+          aria-label="add"
+        >
+          <AddIcon/>
+        </Fab> 
+        Reserved
       </Grid>
-      <Grid item={true}>
+      <Grid item>
         <Fab 
           onClick={handleMinusClick} 
           color="primary" 
           aria-label="add"
         >
-        <AddIcon/>
-      </Fab> Exit
-      Count: {count}/50
+          <AddIcon/>
+        </Fab> 
+        Exit
+        Count: {count}/50
       </Grid>
     </Grid>
   )

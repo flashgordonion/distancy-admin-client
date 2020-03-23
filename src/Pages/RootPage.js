@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import { Grid, AppBar, Tabs, Tab} from '@material-ui/core'
 import EnforcerPage from './EnforcerPage';
 import AdminPage from './AdminPage';
+import CustomerPage from './CustomerPage';
 
 const RootPage = () => {
 
-    const [ selectedTab, setSelectedTab ] = useState(1)
+    const [ selectedTab, setSelectedTab ] = useState(2)
 
     return (
       <div>
@@ -13,6 +14,7 @@ const RootPage = () => {
           <Tabs value={selectedTab} onChange={(event, newValue) => {setSelectedTab(newValue)}}>
             <Tab label="Enforcer"/>
             <Tab label="Admin"/>
+            <Tab label="Customer"/>
           </Tabs>
         </AppBar>
         {/* <main> */}
@@ -25,6 +27,11 @@ const RootPage = () => {
           { selectedTab === 1 &&
             <Grid item>
               <AdminPage/>
+            </Grid> 
+          }
+          { selectedTab === 2 &&
+            <Grid item>
+              <CustomerPage/>
             </Grid> 
           }
         </Grid>

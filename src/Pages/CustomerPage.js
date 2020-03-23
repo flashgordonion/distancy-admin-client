@@ -14,26 +14,27 @@ const CustomerPage = (props) => {
   })
 
   return (
+    <Grid>
+
     <Paper>
       <Grid
         container
         direction='column' 
       >
         <Grid item>
-          <Grid container spacing={3}>
+          <Grid 
+            container 
+            spacing={3}
+          >
             <Grid item>
               <KeyboardTimePicker 
                 autoOk 
-                label="Opening Time" 
+                label="Shopping Time" 
                 value={state.openingTime} 
-                onChange={ openingTime => setState({...state, openingTime})} />
+                onChange={ openingTime => setState({...state, openingTime})} 
+              />
             </Grid>
             <Grid item>
-              <KeyboardTimePicker 
-                autoOk 
-                label="Closing Time" 
-                value={state.closingTime} 
-                onChange={ closingTime => setState({...state, closingTime})} />
             </Grid>
           </Grid>
         </Grid>
@@ -69,6 +70,12 @@ const CustomerPage = (props) => {
         </Grid>
       </Grid>
     </Paper>
+
+    <Paper>
+      Your ticket number
+    </Paper>
+      
+    </Grid>
   )
 }
 

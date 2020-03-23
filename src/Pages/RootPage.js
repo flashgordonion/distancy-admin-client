@@ -11,7 +11,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const RootPage = () => {
 
     const [ selectedTab, setSelectedTab ] = useState(2)
@@ -23,7 +22,7 @@ const RootPage = () => {
     });
 
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     return (
       <div>
@@ -68,11 +67,14 @@ const RootPage = () => {
         </BottomNavigation>
         <p>
           <span>
-            Currently v1.0.0. Released under the GNU General Public License v3.0
+            Currently v0.0.1. Released under the 
+            <a class="rootFooter href="https://github.com/flashgordonion/distancy-web-client/blob/master/LICENSE.txt">
+              GNU General Public License v3.0
+            </a>
           </span>
-          <span>
             Copyright © 2020 Distancy
-          </span>
+
+            https://github.com/flashgordonion/distancy-web-client
         </p>
       </div>
     )

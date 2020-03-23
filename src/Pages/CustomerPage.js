@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, TextField, Button, Paper } from '@material-ui/core';
 import { KeyboardTimePicker } from '@material-ui/pickers';
-import Footer from './Footer.js';
 
 const CustomerPage = (props) => {
 
@@ -77,10 +76,6 @@ const CustomerPage = (props) => {
       
 
     </Grid>
-
-<Footer>
-this is a footer
-</Footer>
   )
 }
 

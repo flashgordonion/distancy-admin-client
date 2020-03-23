@@ -4,6 +4,7 @@ import EnforcerPage from './EnforcerPage';
 import AdminPage from './AdminPage';
 import CustomerPage from './CustomerPage';
 
+// Will clean up imports if we keep bottom buttons
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
@@ -20,12 +21,10 @@ const RootPage = () => {
         width: 500,
       },
     });
-
-    const classes = useStyles();
     const [value, setValue] = useState(0);
 
     return (
-      <div>
+      <Grid>
         <AppBar position='absolute'>      
           <Tabs value={selectedTab} onChange={(event, newValue) => {setSelectedTab(newValue)}}>
             <Tab label="Enforcer"/>
@@ -53,30 +52,35 @@ const RootPage = () => {
         </Grid>
         {/* </main> */}
 
-        <BottomNavigation
+        <BottomNavigation 
+          style={{marginTop: '30px'}} 
+          justify="center"
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
           }}
-          showLabels
-          className={classes.root}
+          showLabels={true}
         >
           <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
         </BottomNavigation>
-        <p>
+        <p
+          style={{marginTop: '0px'}} 
+          justify="center"
+        >
           <span>
-            Currently v0.0.1. Released under the 
-            <a class="rootFooter href="https://github.com/flashgordonion/distancy-web-client/blob/master/LICENSE.txt">
+            Currently v0.0.1. Released under the
+            <a 
+              class="rootFooter" 
+              href="https://github.com/flashgordonion/distancy-web-client/blob/master/LICENSE.txt"
+            >
               GNU General Public License v3.0
             </a>
           </span>
             Copyright © 2020 Distancy
-
-            https://github.com/flashgordonion/distancy-web-client
         </p>
-      </div>
+      </Grid>
     )
 }
 

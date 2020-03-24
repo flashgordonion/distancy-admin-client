@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 
+// mimic this https://help.instagram.com/2482657248648591
+
 const DataUsage = () => {
 
   return (

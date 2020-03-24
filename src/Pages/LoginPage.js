@@ -18,10 +18,9 @@ const Login = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      {/* <CssBaseline /> */}
+      <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">Sign in</Typography>
-        {/* <form className={classes.form} onSubmit={()=>{context.login(state.email, state.password)}}> */}
           <TextField
             variant="outlined"
             margin="normal"
@@ -70,7 +69,6 @@ const Login = () => {
               </Link>
             </Grid>
           </Grid>
-        {/* </form> */}
       </div>
     </Container>
   );

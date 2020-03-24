@@ -16,6 +16,7 @@ const RootPage = () => {
             <Tab label="Enforcer"/>
             <Tab label="Admin"/>
           </Tabs>
+          
         </AppBar>
         {/* <main> */}
         <Grid container style={{marginTop: '60px'}} justify="center">

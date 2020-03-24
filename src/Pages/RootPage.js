@@ -65,7 +65,7 @@ const RootPage = () => {
           <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
           <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
         </BottomNavigation>
-        <p
+        <Grid container
           style={{marginTop: '0px'}} 
           justify="center"
         >
@@ -79,7 +79,7 @@ const RootPage = () => {
             </a>
           </span>
             Copyright © 2020 Distancy
-        </p>
+        </Grid>
       </Grid>
     )
 }

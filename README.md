@@ -1,2 +1,2 @@
-# distancy-admin-client
-Store Administrator and Enforcer Portal for distancy
+# distancy-web-client
+Web Client for distancy

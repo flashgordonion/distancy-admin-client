@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import { Grid, Container, TextField, Card, CardContent, CardHeader, CardActionArea, Button} from '@material-ui/core';
+import { Grid, Container, Card, CardContent, CardHeader} from '@material-ui/core';
 import StoreSummary from './StoreSummary';
-import { KeyboardDatePicker, KeyboardDateTimePicker } from '@material-ui/pickers';
+import { KeyboardDateTimePicker } from '@material-ui/pickers';
 import ReservationSlot from './ReservationSlots';
 import moment from 'moment'
 
@@ -28,8 +28,8 @@ const ReservationPage = (props) => {
                                     variant="inline"
                                     label="Search"
                                     ampm={true}
-                                    // value={selectedDate}
-                                    onChange={(val) => {console.log(val)}}
+                                    value={searchDateTime}
+                                    onChange={setSearchDateTime}
                                     // onError={console.log}
                                     disablePast
                                     format="YYYY/MM/DD HH:mm"

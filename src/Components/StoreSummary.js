@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, Typography } from '@material-ui/core';
+import { Card, CardHeader } from '@material-ui/core';
 
 
 const StoreSummary = (props) => {

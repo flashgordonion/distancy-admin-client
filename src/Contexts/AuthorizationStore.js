@@ -48,7 +48,7 @@ export const AuthorizationStore = (props) => {
                 })
             } catch (error) {
                 // Remove invalid token
-                if (error.response.status === 401) {
+                if (error?.response?.status === 401) {
                     Cookie.remove('distancy_token')
                 }
             } finally {

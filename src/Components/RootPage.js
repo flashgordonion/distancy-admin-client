@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Typography, Grid} from '@material-ui/core'
+import { AppBar, Typography, Grid, Container} from '@material-ui/core'
 import EnforcerPage from './EnforcerPage';
 import AdminPage from './AdminPage';
 import LoginPage from './LoginPage';
@@ -27,24 +27,26 @@ const RootPage = () => {
           
           
         </AppBar>
-        <BrowserRouter basename="/">
-          <Switch>
-            <Route path="/enforcer">
-              <EnforcerPage/>
-            </Route>
-            <Route path="/admin">
-              <AdminPage/>
-            </Route>
-            <Route path="/login">
-              <LoginPage/>
-            </Route>
-            
-            <Route exact path="/">
-              <ReservationPage/>
-            </Route>
-            <Route render={() => <Redirect to="/"/>} />
-          </Switch>
-        </BrowserRouter>
+        <Container>
+          <BrowserRouter basename="/">
+            <Switch>
+              <Route path="/enforcer">
+                <EnforcerPage/>
+              </Route>
+              <Route path="/admin">
+                <AdminPage/>
+              </Route>
+              <Route path="/login">
+                <LoginPage/>
+              </Route>
+              
+              <Route exact path="/">
+                <ReservationPage/>
+              </Route>
+              <Route render={() => <Redirect to="/"/>} />
+            </Switch>
+          </BrowserRouter>
+        </Container>
       </div>
     )
 }

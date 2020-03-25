@@ -5,17 +5,17 @@ const loadConfig = () => {
     switch (process.env.NODE_ENV ) {
         case 'development':
             envConfig = {
-                "AUTHORIZATION_URL": "http://localhost:8000/api-token-auth/",
+                "BACKEND_URL": "http://localhost:8000"
             }
             break;
         case 'test':
             envConfig = {
-                "AUTHORIZATION_URL": process.env['REACT_APP_AUTHORIZATION_URL'],
+                "BACKEND_URL": process.env['BACKEND_URL']
             }
             break;
         case 'production':
             envConfig = {
-                "AUTHORIZATION_URL": process.env['REACT_APP_AUTHORIZATION_URL'],
+                "BACKEND_URL": process.env['BACKEND_URL']
             }
             break
         default:

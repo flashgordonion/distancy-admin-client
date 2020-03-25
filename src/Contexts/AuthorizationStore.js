@@ -8,7 +8,6 @@ const Context = React.createContext()
 // const AuthContext = React.createContext({})
 // const AuthProvider = Context.Provider
 
-
 export const AuthorizationStore = (props) => {
 
     // Attemt to auto-authorize on page refresh

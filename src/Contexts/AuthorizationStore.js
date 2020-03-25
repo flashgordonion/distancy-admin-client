@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ENV_CONFIG } from '../Config/config'
-import moment from 'moment'
+import Cookie from 'js-cookie'
 
 
 const Context = React.createContext()
@@ -19,22 +19,44 @@ export const AuthorizationStore = (props) => {
         email: "",
         token: "",
         isAuthenticated: false,
-        isAuthenticating: false,
         authorizations: []
     }
     const [state, setState] = useState(baseState)
+    const [isAuthenticating, setIsAuthenticating] = useState(false)
 
     const storeToken = (token) => {
-        let expry = moment().add(365, 'days').utc().format(
-            "ddd, DD MMM YYYY HH:mm:ss"
-        )
-        document.cookie = `distancy_token=${token}; expires=${expry}; path=/`
+        Cookie.set('distancy_token', token, { expires: 365})
     }
 
-    const fetchValidateToken = () => {
+    const fetchValidateToken = async () => {
         // Retrieve token cookie
-        // Async validate
-        // Set logged in status if valid
+        let storedToken = Cookie.get('distancy_token')
+        
+        if (storedToken) {
+            setIsAuthenticating(true)
+            // Async validate
+            try {
+                let resp = await axios.get(
+                    `${ENV_CONFIG['BACKEND_URL']}/api-token-verification/`,
+                    {
+                        "headers": {'Authorization': `Token ${storedToken}`}
+                    }
+                )
+                setState({
+                    email: resp.data['username'],
+                    token: storedToken,
+                    isAuthenticated: true,
+                    authorizations: []
+                })
+            } catch (error) {
+                // Remove invalid token
+                if (error?.response?.status === 401) {
+                    Cookie.remove('distancy_token')
+                }
+            } finally {
+                setIsAuthenticating(false)
+            }
+        }
     }
 
     const signup = async (email, password) => {
@@ -42,9 +64,11 @@ export const AuthorizationStore = (props) => {
     }
 
     const login = async (email, password) => {
+        
         try {
+            setIsAuthenticating(true)
             let resp = await axios.post(
-                ENV_CONFIG['AUTHORIZATION_URL'],
+                `${ENV_CONFIG['BACKEND_URL']}/api-token-auth/`,
                 {
                     username: email,
                     password: password
@@ -61,10 +85,11 @@ export const AuthorizationStore = (props) => {
             })
         }
         catch (error) {
+            // TODO - display login problem
             console.log(error.response.data)
         }
         finally {
-
+            setIsAuthenticating(false)
         }
     }
 
@@ -75,6 +100,7 @@ export const AuthorizationStore = (props) => {
     return (
         <Context.Provider value = {{
             ...state,
+            isAuthenticating,
             login,
             logout,
             signup

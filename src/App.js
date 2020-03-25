@@ -1,10 +1,11 @@
 import React from 'react';
 import 'typeface-roboto';
 import './App.css';
-import RootPage from './Pages/RootPage';
+import RootPage from './Components/RootPage';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { AuthorizationStore } from './Contexts/AuthorizationStore'
 import MomentUtils from '@date-io/moment';
+
 
 function App() {
 

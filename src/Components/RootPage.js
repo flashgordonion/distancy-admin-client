@@ -5,7 +5,7 @@ import AdminPage from './AdminPage';
 import LoginPage from './LoginPage';
 import ReservationPage from './ReservationPage'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
-
+import GMap from './Map';
 
 const RootPage = () => {
 
@@ -46,6 +46,7 @@ const RootPage = () => {
               <Route render={() => <Redirect to="/"/>} />
             </Switch>
           </BrowserRouter>
+          {/* <GMap/> */}
         </Container>
       </div>
     )

@@ -14,6 +14,14 @@ const ReservationPage = (props) => {
         "searchDateTime": moment(),
         "searchOffset": 3
     })
+    // TODO - pull this into the customer context
+    const [store, setStore] = useState({
+        store_name: "Trader Joe's Westwood",
+        street_address: "1000 Glendon Ave",
+        city: "Los Angeles",
+        state: "CA",
+        zip_code: "90024"
+    })
 
     // TODO wait untilauthorized
     // useEffect(() => {
@@ -24,7 +32,7 @@ const ReservationPage = (props) => {
         <Container maxWidth='md'>
             <Grid container direction='column' spacing={1}>
                 <Grid item>
-                    <StoreSummary/>
+                    <StoreSummary {...store}/>
                 </Grid>
                 <Grid item>
                     <Card>
@@ -38,10 +46,9 @@ const ReservationPage = (props) => {
                                         <Grid item>
                                             <KeyboardDateTimePicker
                                                 ampm={true}
-                                                label="Search Time"
+                                                label="Search From"
                                                 value={searchParams.searchDateTime}
                                                 onChange={searchDateTime => setSearchParams({...searchParams, searchDateTime})}
-                                                onError={console.log}
                                                 disablePast
                                                 openTo='hours'
                                                 format="MM/DD h:mm A"
@@ -52,7 +59,7 @@ const ReservationPage = (props) => {
                                             
                                             <TextField
                                                 labelId="hours-label"
-                                                label="Hours"
+                                                label="Time"
                                                 select
                                                 value={searchParams.searchOffset}
                                                 onChange={ event => setSearchParams({...searchParams, searchOffset: event.target.value})}

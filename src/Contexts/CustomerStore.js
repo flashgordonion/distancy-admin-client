@@ -10,10 +10,21 @@ export const CustomerStore = (props) => {
     const authContext = useContext(AuthorizationContext)
 
     const [openSlots, setOpenSlots] = useState([])
-
+    const [storeInfo, setStoreInfo] = useState(null)
     // We want to ensure search is reset on page reload
     useEffect( () => {
 
+    }, [])
+
+    useEffect( () => { //TODO - support 
+        setStoreInfo({
+            store: 1,
+            store_name: "Trader Joe's Westwood",
+            street_address: "1000 Glendon Ave",
+            city: "Los Angeles",
+            state: "CA",
+            zip_code: "90024"
+        })
     }, [])
 
     const findSlots = async (searchDateTime, searchOffset) => {
@@ -41,6 +52,7 @@ export const CustomerStore = (props) => {
     
     return (
         <Context.Provider value = {{
+            storeInfo,
             openSlots,
             findSlots
         }}>

@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect} from 'react';
-import { Button, Grid, Container, Card, CardContent, CardHeader, MenuItem, Select, InputLabel, TextField} from '@material-ui/core';
+import React, {useState, useContext} from 'react';
+import { Button, Grid, Container, Card, CardContent, CardHeader, MenuItem, TextField} from '@material-ui/core';
 import StoreSummary from './StoreSummary';
 import { KeyboardDateTimePicker } from '@material-ui/pickers';
 import ReservationSlot from './ReservationSlots';
@@ -15,25 +15,18 @@ const ReservationPage = (props) => {
         "searchOffset": 3
     })
     // TODO - pull this into the customer context
-    const [store, setStore] = useState({
-        store_name: "Trader Joe's Westwood",
-        street_address: "1000 Glendon Ave",
-        city: "Los Angeles",
-        state: "CA",
-        zip_code: "90024"
-    })
-
-    // TODO wait untilauthorized
-    // useEffect(() => {
-    //     customerContext.findSlots({...searchParams})
-    // }, [searchParams])
+    
 
     return (
         <Container maxWidth='md'>
             <Grid container direction='column' spacing={1}>
-                <Grid item>
-                    <StoreSummary {...store}/>
-                </Grid>
+                
+                { customerContext.storeInfo &&
+                    <Grid item>
+                        <StoreSummary {...customerContext.storeInfo}/>
+                    </Grid>
+                }
+
                 <Grid item>
                     <Card>
                         <CardHeader 

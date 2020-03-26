@@ -12,22 +12,28 @@ const RootPage = () => {
     return (
       <div>
         <AppBar position='static'>  
-          <Grid container>
+          <Grid container spacing={1} style={{margin: "8px"}} justify="space-between" alignItems="center">
             <Grid item>
-              <Typography>
+              <Typography variant='h3' >
                 Distancy
               </Typography>
             </Grid>
             <Grid item>
-              <Typography>
-                Keeping people apart
+
+            </Grid>
+            <Grid item style={{marginRight: "16px"}}>
+              <Typography >
+                Get your groceries
+              </Typography>
+              <Typography >
+                with some space
               </Typography>
             </Grid>
           </Grid>    
           
           
         </AppBar>
-        <Container>
+        <Container style={{marginTop: '8px'}}>
           <BrowserRouter basename="/">
             <Switch>
               <Route path="/enforcer">

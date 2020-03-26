@@ -1,20 +1,30 @@
 import React from 'react';
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Grid, TextField, Button } from '@material-ui/core';
+import moment from 'moment'
 
 
-const ReservationSlot = (props) => {
+const ReservationSlot = ({slot, ...props}) => {
 
   return (
     <Grid container direction='row' spacing={1} alignItems="center">
-        <Grid item>
-            <Typography>10:15 - 10:30</Typography>
-        </Grid>
-        <Grid item>
-            <Typography>Slots Open: 3/10</Typography>
-        </Grid>
-        <Grid item>
-            <Button>Reserve</Button>    
-        </Grid>
+      <Grid item>
+        <TextField
+          label='Slots Available'
+          value={`${slot.maximum - slot.taken}/${slot.maximum}`}
+          disabled
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          label='Arrive between'
+          value={`${moment(slot.arrive_after).format('LT').toString()} - ${moment(slot.arrive_before).format('LT').toString()}`}
+          disabled
+        />
+      </Grid>
+      
+      <Grid item>
+          <Button>Reserve</Button>    
+      </Grid>
     </Grid>
   )
 }

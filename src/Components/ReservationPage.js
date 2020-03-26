@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import { Button, Grid, Container, Card, CardContent, CardHeader, MenuItem, Select, InputLabel, TextField} from '@material-ui/core';
 import StoreSummary from './StoreSummary';
-import { KeyboardTimePicker, KeyboardDatePicker, KeyboardDateTimePicker } from '@material-ui/pickers';
+import { KeyboardDateTimePicker } from '@material-ui/pickers';
 import ReservationSlot from './ReservationSlots';
 import moment from 'moment'
 import CustomerStore from '../Contexts/CustomerStore';
@@ -10,8 +10,6 @@ import CustomerStore from '../Contexts/CustomerStore';
 const ReservationPage = (props) => {
     const customerContext = useContext(CustomerStore)
 
-    // const [searchDateTime, setSearchDateTime] = useState(moment())
-    // const [searchRange, setSearchRange] = useState(3)
     const [searchParams, setSearchParams] = useState({
         "searchDateTime": moment(),
         "searchOffset": 3

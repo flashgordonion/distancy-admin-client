@@ -9,7 +9,6 @@ export const CustomerStore = (props) => {
 
     const authContext = useContext(AuthorizationContext)
 
-    const [ticket, setTicket] = useState({})
     const [openSlots, setOpenSlots] = useState([])
 
     // We want to ensure search is reset on page reload
@@ -30,15 +29,13 @@ export const CustomerStore = (props) => {
                     "headers": {'Authorization': `Token ${authContext.token}`}
                 }
             )
-            console.log(resp.data)
             setOpenSlots(resp.data['slots'])
         } catch (error) {
             // Remove invalid token
-            if (error?.response?.status === 401) {
-                
-            }
+            console.log(error)
             //TODO - alert to unexpected response
         } finally {
+
         }
     }
     

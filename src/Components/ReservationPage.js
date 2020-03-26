@@ -1,20 +1,15 @@
-import React, {useState, useContext} from 'react';
-import { Button, Grid, Container, Card, CardContent, CardHeader, MenuItem, TextField} from '@material-ui/core';
+import React, { useContext } from 'react';
+import { Grid, Container, Card, CardContent} from '@material-ui/core';
 import StoreSummary from './StoreSummary';
-import { KeyboardDateTimePicker } from '@material-ui/pickers';
+
 import ReservationSlot from './ReservationSlots';
-import moment from 'moment'
+import ReservationSearch from './ReservationSearch';
+
 import CustomerStore from '../Contexts/CustomerStore';
 
 
 const ReservationPage = (props) => {
     const customerContext = useContext(CustomerStore)
-
-    const [searchParams, setSearchParams] = useState({
-        "searchDateTime": moment(),
-        "searchOffset": 3
-    })
-    // TODO - pull this into the customer context
     
 
     return (
@@ -28,53 +23,7 @@ const ReservationPage = (props) => {
                 }
 
                 <Grid item>
-                    <Card>
-                        <CardHeader 
-                            title="Find open times"
-                        />
-                        <CardContent>
-                            <Grid container direction='column' spacing={1}>
-                                <Grid item>
-                                    <Grid container spacing={1}>
-                                        <Grid item>
-                                            <KeyboardDateTimePicker
-                                                ampm={true}
-                                                label="Search From"
-                                                value={searchParams.searchDateTime}
-                                                onChange={searchDateTime => setSearchParams({...searchParams, searchDateTime})}
-                                                disablePast
-                                                openTo='hours'
-                                                format="MM/DD h:mm A"
-                                                minutesStep={5}
-                                            />
-                                        </Grid>
-                                        <Grid item>
-                                            
-                                            <TextField
-                                                labelId="hours-label"
-                                                label="Time"
-                                                select
-                                                value={searchParams.searchOffset}
-                                                onChange={ event => setSearchParams({...searchParams, searchOffset: event.target.value})}
-                                            >
-                                                {[1,2,3,4].map( item => <MenuItem value={item}>{item} Hours</MenuItem>)}
-                                            </TextField>
-                                        </Grid>
-                                        
-                                    </Grid>
-                                </Grid>
-                                <Grid item>
-                                    <Button
-                                        onClick={
-                                            () => customerContext.findSlots(searchParams.searchDateTime, searchParams.searchOffset)
-                                        }
-                                    >
-                                        Search
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                        </CardContent>
-                    </Card>
+                    <ReservationSearch/>
                 </Grid>
                 {
                     customerContext.openSlots.map( (item, idx) => {

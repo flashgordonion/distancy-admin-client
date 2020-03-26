@@ -7,11 +7,10 @@ const ReservationTicket = (props) => {
   return (
     <Card>
         <CardHeader
-            title="TODO Trader Joe's Westwood"
-            subtitle="TODO trader joes address"
+            title="Held Spot"
         />
         <CardContent>
-
+          Todo - 
         </CardContent>
     </Card>
   )

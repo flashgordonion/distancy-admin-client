@@ -4,6 +4,7 @@ import './App.css';
 import RootPage from './Components/RootPage';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { AuthorizationStore } from './Contexts/AuthorizationStore'
+import { CustomerStore } from './Contexts/CustomerStore'
 import MomentUtils from '@date-io/moment';
 
 
@@ -12,9 +13,11 @@ function App() {
   return (
     <MuiPickersUtilsProvider utils={MomentUtils}>
       <AuthorizationStore>
-        <div>
-          <RootPage />
-        </div>
+        <CustomerStore>
+          <div>
+            <RootPage />
+          </div>
+        </CustomerStore>
       </AuthorizationStore>
     </MuiPickersUtilsProvider>
   );

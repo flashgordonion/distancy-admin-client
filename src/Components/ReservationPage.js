@@ -4,6 +4,7 @@ import StoreSummary from './StoreSummary';
 
 import ReservationSlot from './ReservationSlots';
 import ReservationSearch from './ReservationSearch';
+import ReservationTicket from './ReservationTicket';
 
 import CustomerStore from '../Contexts/CustomerStore';
 
@@ -11,7 +12,6 @@ import CustomerStore from '../Contexts/CustomerStore';
 const ReservationPage = (props) => {
     const customerContext = useContext(CustomerStore)
     
-
     return (
         <Container maxWidth='md'>
             <Grid container direction='column' spacing={1}>
@@ -21,7 +21,9 @@ const ReservationPage = (props) => {
                         <StoreSummary {...customerContext.storeInfo}/>
                     </Grid>
                 }
-
+                <Grid item>
+                    <ReservationTicket/>
+                </Grid>
                 <Grid item>
                     <ReservationSearch/>
                 </Grid>

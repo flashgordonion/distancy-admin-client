@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Container, Typography} from '@material-ui/core';
+import { CardContent, Card, CardHeader} from '@material-ui/core';
 
 
 const ReservationTicket = (props) => {

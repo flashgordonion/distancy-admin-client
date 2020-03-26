@@ -2,13 +2,13 @@ import React from 'react';
 import { Card, CardHeader } from '@material-ui/core';
 
 
-const StoreSummary = (props) => {
+const StoreSummary = ({store_name, street_address, city, state, zip_code, ...props}) => {
 
   return (
     <Card>
         <CardHeader
-            title="TODO Trader Joe's Westwood"
-            subheader="Trader joes westwood"
+            title={store_name}
+            subheader={`${street_address}, ${city}, ${state}, ${zip_code}`}
         />
     </Card>
         

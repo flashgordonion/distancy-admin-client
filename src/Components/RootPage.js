@@ -11,8 +11,9 @@ const RootPage = () => {
 
     return (
       <div>
-        <AppBar position='static'>  
-          <Grid container spacing={1} style={{margin: "8px"}} justify="space-between" alignItems="center">
+        <AppBar position='static'>
+          <Container maxWidth="xl">
+          <Grid container spacing={1} justify="space-between" alignItems="center">
             <Grid item>
               <Typography variant='h3' >
                 Distancy
@@ -21,16 +22,17 @@ const RootPage = () => {
             <Grid item>
 
             </Grid>
-            <Grid item style={{marginRight: "16px"}}>
+            {/* <Grid item style={{marginRight: "16px"}}> */}
+            <Grid item>
               <Typography >
                 Get your groceries
               </Typography>
               <Typography >
-                with some space
+                Keep your space
               </Typography>
             </Grid>
           </Grid>    
-          
+          </Container>
           
         </AppBar>
         <Container style={{marginTop: '8px'}}>

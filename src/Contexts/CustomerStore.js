@@ -13,17 +13,17 @@ export const CustomerStore = (props) => {
 	const [openSlots, setOpenSlots] = useState([])
 	const [storeInfo, setStoreInfo] = useState(null)
 	const [comingRes, setComingRes] = useState(null)
-	
+
+
 	// TODO - ensure we check first for upcoming reservations on page reload
 	useEffect(() => {
 		
 		if (authContext.isAuthenticated === true) {
 			getUpcomingReservation()
-			console.log("Authenticated")
 		}
-		else {
-			console.log("Not Authenticate")
-		}
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook - references in depth what this warns about
 	}, [authContext.isAuthenticated])
 
 	// We want to ensure search is reset on page reload
@@ -31,7 +31,6 @@ export const CustomerStore = (props) => {
 
 	}, [])
 
-	
 
 	useEffect(() => { //TODO - support store lookup
 		setStoreInfo({

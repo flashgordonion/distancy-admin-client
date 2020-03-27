@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { CardContent, Card, CardHeader, Grid } from '@material-ui/core';
-import CustomerStore from '../Contexts/CustomerStore'
 import moment from 'moment'
 
 

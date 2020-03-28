@@ -40,7 +40,7 @@ export const AuthorizationStore = (props) => {
           }
         )
         setState({
-          email: resp.data['username'],
+          email: resp.data['email'],
           token: storedToken,
           isAuthenticated: true,
           authorizations: []
@@ -52,6 +52,7 @@ export const AuthorizationStore = (props) => {
         }
       } finally {
         setIsAuthenticating(false)
+        console.log(state)
       }
     }
   }

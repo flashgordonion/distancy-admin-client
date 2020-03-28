@@ -22,8 +22,9 @@ export const CustomerStore = (props) => {
 			getUpcomingReservation()
 		}
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+	
 	// https://stackoverflow.com/questions/55840294/how-to-fix-missing-dependency-warning-when-using-useeffect-react-hook - references in depth what this warns about
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [authContext.isAuthenticated])
 
 	// We want to ensure search is reset on page reload

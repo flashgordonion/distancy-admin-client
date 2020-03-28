@@ -1,26 +1,30 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { useStyles } from '../Styles/Styles';
 import Container from '@material-ui/core/Container';
 import AuthorizationContext from '../Contexts/AuthorizationStore'
+import { Grid } from '@material-ui/core';
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const classes = useStyles();
   const context = useContext(AuthorizationContext)
 
-  const [state, setState] = useState({email:'', password: ''})
+  const [state, setState] = useState({email:'', password: '', passwordDuplicate: ''})
+  const [passWordMismatch, setPassWordMismatch] = useState(null)
 
+  // Clear the warning for usability when forms are edited
+  useEffect( () => {
+    setPassWordMismatch(null)
+  }, [state])
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">Sign in</Typography>
+        <Typography component="h1" variant="h5">Create Account</Typography>
           <TextField
             variant="outlined"
             margin="normal"
@@ -47,31 +51,46 @@ const LoginPage = () => {
             id="password"
             autoComplete="current-password"
           />
-          <Button
-            // type="submit"
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
             fullWidth
-            onClick={()=>{context.login(state.email, state.password)}}
+            value={state.passwordDuplicate}
+            onChange={event => setState({...state, passwordDuplicate : event.target.value})}
+            name="password"
+            label="Reenter Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <Button
+            fullWidth
+            onClick={()=>{
+              if (state.passwordDuplicate !== state.password) {
+                setPassWordMismatch(true)
+              }
+              else {
+                context.signup(state.email, state.password)
+              }
+            }}
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Create Account
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
+          { passWordMismatch === true &&
             <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+              <Typography>
+                Passwords don't match.
+              </Typography>
             </Grid>
-          </Grid>
+          }
+          
       </div>
     </Container>
   );
 }
 
-export default LoginPage
+export default SignUpPage

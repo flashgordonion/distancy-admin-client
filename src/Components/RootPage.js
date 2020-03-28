@@ -3,6 +3,7 @@ import { AppBar, Typography, Grid, Container} from '@material-ui/core'
 import EnforcerPage from './EnforcerPage';
 import AdminPage from './AdminPage';
 import LoginPage from './LoginPage';
+import SignUpPage from './SignUpPage';
 import ReservationPage from './ReservationPage'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
@@ -22,7 +23,6 @@ const RootPage = () => {
             <Grid item>
 
             </Grid>
-            {/* <Grid item style={{marginRight: "16px"}}> */}
             <Grid item>
               <Typography >
                 Get your groceries
@@ -47,7 +47,9 @@ const RootPage = () => {
               <Route path="/login">
                 <LoginPage/>
               </Route>
-              
+              <Route path="/signup">
+                <SignUpPage/>
+              </Route>
               <Route exact path="/">
                 <ReservationPage/>
               </Route>

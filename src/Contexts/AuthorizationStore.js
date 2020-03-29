@@ -52,7 +52,6 @@ export const AuthorizationStore = (props) => {
         }
       } finally {
         setIsAuthenticating(false)
-        console.log(state)
       }
     }
   }

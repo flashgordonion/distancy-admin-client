@@ -11,8 +11,11 @@ export const CustomerStore = (props) => {
 	const authContext = useContext(AuthorizationContext)
 
 	const [openSlots, setOpenSlots] = useState([])
+	const [loadingOpenSlots, setLoadingOpenSlots] = useState(false)
 	const [storeInfo, setStoreInfo] = useState(null)
+	const [loadingStoreInfo, setLoadingStoreInfo] = useState(false)
 	const [comingRes, setComingRes] = useState(null)
+	const [loadingComingRes, setLoadingComingRes] = useState(false)
 
 
 	// TODO - ensure we check first for upcoming reservations on page reload
@@ -34,6 +37,7 @@ export const CustomerStore = (props) => {
 
 
 	useEffect(() => { //TODO - support store lookup
+		setLoadingStoreInfo(true)
 		setStoreInfo({
 			store: 1,
 			store_name: "Trader Joe's Westwood",
@@ -42,9 +46,11 @@ export const CustomerStore = (props) => {
 			state: "CA",
 			zip_code: "90024"
 		})
+		setLoadingStoreInfo(false)
 	}, [])
 
 	const findSlots = async (searchDateTime, searchOffset) => {
+		setLoadingOpenSlots(true)
 		try {
 			let resp = await axios.post(
 				`${ENV_CONFIG['BACKEND_URL']}/searchReservations/`,
@@ -63,7 +69,7 @@ export const CustomerStore = (props) => {
 			console.log(error)
 			//TODO - alert to unexpected response
 		} finally {
-
+			setLoadingOpenSlots(false)
 		}
 	}
 
@@ -73,7 +79,7 @@ export const CustomerStore = (props) => {
 	 * @param {*} slotEnd 
 	 */
 	const reserveSlot = async (slotStart, slotEnd) => {
-
+		setLoadingOpenSlots(true)
 		try {
 			let resp = await axios.post(
 				`${ENV_CONFIG['BACKEND_URL']}/reservation/`,
@@ -93,7 +99,7 @@ export const CustomerStore = (props) => {
 				alert(errorMessage)
 			}
 		} finally {
-
+			setLoadingOpenSlots(false)
 		}
 	}
 
@@ -102,6 +108,7 @@ export const CustomerStore = (props) => {
 	 * for the currently selected store.
 	 */
 	const getUpcomingReservation = async () => {
+		setLoadingComingRes(true)
 		try {
 			let resp = await axios.get(
 				`${ENV_CONFIG['BACKEND_URL']}/reservation/`,
@@ -117,15 +124,18 @@ export const CustomerStore = (props) => {
 		} catch (error) {
 			//TODO - alert to unexpected response
 		} finally {
-			
+			setLoadingComingRes(false)
 		}
 	}
 
 	return (
 		<Context.Provider value={{
 			storeInfo,
+			loadingStoreInfo,
 			openSlots,
+			loadingOpenSlots,
 			comingRes,
+			loadingComingRes,
 			findSlots,
 			reserveSlot
 		}}>

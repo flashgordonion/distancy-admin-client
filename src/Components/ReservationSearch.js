@@ -30,6 +30,8 @@ const ReservationSearch = (props) => {
                               disablePast
                               openTo='hours'
                               format="MM/DD h:mm A"
+                              maxDate={moment().add(1, 'days')}
+                              maxDateMessage="Reservations can only be made one day in advance."
                               minutesStep={5}
                           />
                       </Grid>

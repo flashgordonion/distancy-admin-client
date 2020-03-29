@@ -36,13 +36,12 @@ const ReservationSearch = (props) => {
                       <Grid item>
                           
                           <TextField
-                              labelId="hours-label"
                               label="Time"
                               select
                               value={searchParams.searchOffset}
                               onChange={ event => setSearchParams({...searchParams, searchOffset: event.target.value})}
                           >
-                              {[1,2,3,4].map( item => <MenuItem value={item}>{item} Hours</MenuItem>)}
+                              {[1,2,3,4].map( item => <MenuItem key={item} value={item}>{item} Hours</MenuItem>)}
                           </TextField>
                       </Grid>
                       

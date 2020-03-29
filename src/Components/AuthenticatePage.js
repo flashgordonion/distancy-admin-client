@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import AuthorizationStore from '../Contexts/AuthorizationStore';
+import {CircularProgress, Grid} from '@material-ui/core'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import SignUpPage from './SignUpPage';
@@ -10,7 +11,11 @@ const AuthenticatePage = ({children, ...props}) => {
 
   const renderApp = () => {
     if (authContext.isAuthenticating) {
-      return (<div>Authenticating</div>)
+      return (
+        <Grid container justify="center">
+          <CircularProgress/>
+        </Grid>
+      )
     }
     else if (authContext.isAuthenticated === false) {
       return (

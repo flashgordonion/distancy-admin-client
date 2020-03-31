@@ -23,52 +23,6 @@ const useStyles = makeStyles({
 const RootPage = () => {
   const classes = useStyles();
 
-<<<<<<< HEAD
-  return (
-    <div>
-      <AppBar
-        className={classes.root}
-        position='static'
-      >
-        <Grid container>
-          <Grid item>
-            <Typography>
-              Distancy
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography>
-              Keeping people apart
-            </Typography>
-          </Grid>
-        </Grid>    
-        
-        
-      </AppBar>
-      <Container>
-        <BrowserRouter basename="/">
-          <Switch>
-            <Route path="/enforcer">
-              <EnforcerPage/>
-            </Route>
-            <Route path="/admin">
-              <AdminPage/>
-            </Route>
-            <Route path="/login">
-              <LoginPage/>
-            </Route>
-            
-            <Route exact path="/">
-              <ReservationPage/>
-            </Route>
-            <Route render={() => <Redirect to="/"/>} />
-          </Switch>
-        </BrowserRouter>
-        {/* <GMap/> */}
-      </Container>
-    </div>
-  )
-=======
     return (
       <div>
         <AppBar position='static'>
@@ -114,7 +68,6 @@ const RootPage = () => {
         </Container>
       </div>
     )
->>>>>>> dev
 }
 
 export default RootPage

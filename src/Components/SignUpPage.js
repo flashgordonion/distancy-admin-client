@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import { useStyles } from '../Styles/Styles';
 import Container from '@material-ui/core/Container';
@@ -87,7 +88,13 @@ const SignUpPage = () => {
               </Typography>
             </Grid>
           }
-          
+        <Grid container>
+          <Grid item>
+            <Link to="/login">
+              {"Already have an account? Log in"}
+            </Link>
+          </Grid>
+        </Grid>
       </div>
     </Container>
   );

@@ -20,7 +20,7 @@ const LoginPage = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">Sign in</Typography>
+        <Typography component="h1" variant="h5">Log in</Typography>
           <TextField
             variant="outlined"
             margin="normal"
@@ -55,7 +55,7 @@ const LoginPage = () => {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Log In
           </Button>
           <Grid container>
             <Grid item>

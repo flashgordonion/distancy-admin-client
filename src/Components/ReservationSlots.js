@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Grid, TextField, Button } from '@material-ui/core';
 import moment from 'moment'
+import CustomerStore from '../Contexts/CustomerStore';
 
+const ReservationSlot = ({ slot, ...props }) => {
 
-const ReservationSlot = ({slot, ...props}) => {
+  const {reserveSlot} = useContext(CustomerStore)
 
   return (
     <Grid container direction='row' spacing={1} alignItems="center">
@@ -21,9 +23,13 @@ const ReservationSlot = ({slot, ...props}) => {
           disabled
         />
       </Grid>
-      
+
       <Grid item>
-          <Button>Reserve</Button>    
+        <Button
+          onClick = {() => {reserveSlot(slot.arrive_after, slot.arrive_before)}}
+        >
+          Reserve
+        </Button>
       </Grid>
     </Grid>
   )

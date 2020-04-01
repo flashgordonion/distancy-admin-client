@@ -60,7 +60,7 @@ const LoginPage = () => {
           <Grid container>
             <Grid item>
               <Link to="/signup">
-                {"Don't have an account? Sign Up"}
+                Don't have an account? Sign Up
               </Link>
             </Grid>
           </Grid>

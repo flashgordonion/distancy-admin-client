@@ -56,7 +56,7 @@ const ReservationSearch = (props) => {
               }
             >
               Search
-                  </Button>
+            </Button>
           </Grid>
         </Grid>
       </CardContent>

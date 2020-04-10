@@ -5,7 +5,7 @@ const loadConfig = () => {
     switch (process.env.NODE_ENV ) {
         case 'development':
             envConfig = {
-                "BACKEND_URL": "http://localhost:8000"
+                "BACKEND_URL": "http://localhost:90"
             }
             break;
         case 'test':

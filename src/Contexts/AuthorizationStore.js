@@ -18,7 +18,7 @@ export const AuthorizationStore = (props) => {
   const [state, setState] = useState({
     email: "",
     token: "",
-    isAuthenticated: true,
+    isAuthenticated: false,
     authorizations: []
   })
   const [isAuthenticating, setIsAuthenticating] = useState(false)

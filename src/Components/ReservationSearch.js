@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Grid, Button, CardHeader, MenuItem, TextField, Card, CardContent, } from '@material-ui/core';
 import { KeyboardDateTimePicker } from '@material-ui/pickers';
 import moment from 'moment'
@@ -11,6 +11,16 @@ const ReservationSearch = (props) => {
     "searchDateTime": moment(),
     "searchOffset": 3
   })
+
+  const renderSearch = () => {
+    customerContext.findSlots(searchParams.searchDateTime, searchParams.searchOffset)
+  }
+
+  useEffect(() => {
+      renderSearch();
+    },
+    [searchParams]
+  )
 
   return (
     <Card>
@@ -41,22 +51,34 @@ const ReservationSearch = (props) => {
                   label="Time"
                   select
                   value={searchParams.searchOffset}
-                  onChange={event => setSearchParams({ ...searchParams, searchOffset: event.target.value })}
+                  onChange={(event) => {
+                      setSearchParams({ ...searchParams, searchOffset: event.target.value })
+                      // renderSearch()
+                  }}
                 >
-                  {[1, 2, 3, 4].map(item => <MenuItem key={item} value={item}>{item} Hours</MenuItem>)}
+                  {[1, 2, 3, 4]
+                    .map((item) => {
+                      return(
+                        <MenuItem 
+                          key={item} 
+                          value={item}
+                        >
+                          {item} Hours
+                        </MenuItem>
+                        )
+                    })
+                  }
                 </TextField>
               </Grid>
 
             </Grid>
           </Grid>
           <Grid item>
-            <Button
-              onClick={
-                () => customerContext.findSlots(searchParams.searchDateTime, searchParams.searchOffset)
-              }
+            {/* <Button
+              onClick={renderSearch}
             >
               Search
-            </Button>
+            </Button> */}
           </Grid>
         </Grid>
       </CardContent>

@@ -9,7 +9,10 @@ const ReservationSlot = ({ slot, ...props }) => {
 
   return (
     <Grid container direction='row' spacing={1} alignItems="center">
-      <Grid item>
+      <Grid 
+        item
+        style={{ backgroundColor: coral }}
+      >
         <TextField
           label='Slots Available'
           value={`${slot.maximum - slot.taken}/${slot.maximum}`}

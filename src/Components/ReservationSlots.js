@@ -11,7 +11,7 @@ const ReservationSlot = ({ slot, ...props }) => {
     <Grid container direction='row' spacing={1} alignItems="center">
       <Grid 
         item
-        style={{ backgroundColor: coral }}
+        style={{}}
       >
         <TextField
           label='Slots Available'

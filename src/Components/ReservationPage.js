@@ -37,7 +37,7 @@ const ReservationPage = (props) => {
 
   const renderSearch = () => {
 
-    let slots
+    let slots;
 
     if (customerContext.loadingOpenSlots === true) {
       slots = (

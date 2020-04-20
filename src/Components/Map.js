@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Container, Card, CardContent, CardHeader} from '@material-ui/core';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const mapStyles = {
   width: '100%',

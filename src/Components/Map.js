@@ -1,26 +1,35 @@
-import React from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import React, { useEffect, useState, useRef } from 'react'
 
-const mapStyles = {
-  width: '100%',
-  height: '100%'
-};
+export default function Map({ options, onMount, className, onMountProps }) {
+  const ref = useRef()
+  const [map, setMap] = useState()
 
-export const GMap = () => {
+  useEffect(() => {
+    const onLoad = () => setMap(new window.google.maps.Map(ref.current, options))
+    if (!window.google) {
+      const script = document.createElement(`script`)
+      script.src =
+        `https://maps.googleapis.com/maps/api/js?key=` +
+        `AIzaSyDpbnpIYddiS8_LEogXC7JEbg7r_5LcSuY`
+      document.head.append(script)
+      script.addEventListener(`load`, onLoad)
+      return () => script.removeEventListener(`load`, onLoad)
+    } else onLoad()
+  }, [options])
+
+  if (map && typeof onMount === `function`) onMount(map, onMountProps)
+
   return (
-    <Map
-      // google={this.props.google}
-      google
-      zoom={14}
-      style={mapStyles}
-      initialCenter={{
-        lat: -1.2884,
-        lng: 36.8233
-      }}
+    <div
+      style={{ height: `60vh`, margin: `1em 0`, borderRadius: `0.5em` }}
+      {...{ ref, className }}
     />
-  );
+  )
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDpbnpIYddiS8_LEogXC7JEbg7r_5LcSuY'
-})(GMap);
+Map.defaultProps = {
+  options: {
+    center: { lat: 48, lng: 8 },
+    zoom: 5,
+  },
+}

@@ -45,8 +45,8 @@ export const CustomerStore = (props) => {
 			city: "Los Angeles",
 			state: "CA",
 			zip_code: "90064",
-			store_lat: "34.030061",
-			store_lon: "-118.421488"
+			store_lat: 34.030061,
+			store_lon: -118.421488
 		})
 		setLoadingStoreInfo(false)
 	}, [])

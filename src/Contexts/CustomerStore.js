@@ -40,11 +40,13 @@ export const CustomerStore = (props) => {
 		setLoadingStoreInfo(true)
 		setStoreInfo({
 			store: 1,
-			store_name: "Trader Joe's Westwood",
-			street_address: "1000 Glendon Ave",
+			store_name: "Trader Joe's West Los Angeles",
+			street_address: "10850 National Blvd", 
 			city: "Los Angeles",
 			state: "CA",
-			zip_code: "90024"
+			zip_code: "90064",
+			store_lat: "34.030061",
+			store_lon: "-118.421488"
 		})
 		setLoadingStoreInfo(false)
 	}, [])

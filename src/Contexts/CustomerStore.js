@@ -17,7 +17,6 @@ export const CustomerStore = (props) => {
 	const [comingRes, setComingRes] = useState(null)
 	const [loadingComingRes, setLoadingComingRes] = useState(false)
 
-
 	// TODO - ensure we check first for upcoming reservations on page reload
 	useEffect(() => {
 		
@@ -37,10 +36,9 @@ export const CustomerStore = (props) => {
 
 
 	useEffect(() => { //TODO - support store lookup
-		setLoadingStoreInfo(true)
 		setStoreInfo({
 			store: 1,
-			store_name: "Trader Joe's West Los Angeles",
+			store_name: "useEffect",
 			street_address: "10850 National Blvd", 
 			city: "Los Angeles",
 			state: "CA",
@@ -48,8 +46,33 @@ export const CustomerStore = (props) => {
 			store_lat: 34.030061,
 			store_lon: -118.421488
 		})
-		setLoadingStoreInfo(false)
 	}, [])
+
+	const storeLookup = async () => {
+		setLoadingStoreInfo(true)
+		try {
+			let resp = await axios.get(
+				`${ENV_CONFIG['BACKEND_URL']}/store/`,
+				{}
+			)
+			console.log(resp)
+			// setStoreInfo(resp.data)
+			setStoreInfo({
+        store: 1,
+        store_name: "storeLookup",
+        street_address: "10850 National Blvd", 
+        city: "Los Angeles",
+        state: "CA",
+        zip_code: "90064",
+        store_lat: 34.030061,
+        store_lon: -118.421488
+			})
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setLoadingStoreInfo(false)
+		}
+	}
 
 	const findSlots = async (searchDateTime, searchOffset) => {
 		setLoadingOpenSlots(true)
@@ -109,6 +132,7 @@ export const CustomerStore = (props) => {
 	 * Fetch the upcoming reservation (if it exists) as the current user 
 	 * for the currently selected store.
 	 */
+
 	const getUpcomingReservation = async () => {
 		setLoadingComingRes(true)
 		try {
@@ -139,7 +163,8 @@ export const CustomerStore = (props) => {
 			comingRes,
 			loadingComingRes,
 			findSlots,
-			reserveSlot
+      reserveSlot,
+      storeLookup,
 		}}>
 			{props.children}
 		</Context.Provider>

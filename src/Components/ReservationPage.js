@@ -69,7 +69,9 @@ const ReservationPage = (props) => {
 
         {customerContext.storeInfo &&
           <Grid item>
+
             <StoreSummary {...customerContext.storeInfo} />
+            <StoreSummary {...customerContext.storeLookup} />
           </Grid>
         }
         { renderTicket() }
